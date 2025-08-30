@@ -1,9 +1,27 @@
 import { Search, MapPin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 import heroFood from "@/assets/hero-food.jpg";
+import DomainForSaleModal from "@/components/DomainForSaleModal";
+import { useDomainForSale } from "@/hooks/useDomainForSale";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const { isModalOpen, showModal, hideModal } = useDomainForSale();
+
+  const handleFindRestaurants = () => {
+    navigate("/restaurants");
+  };
+
+  const handleExploreRestaurants = () => {
+    navigate("/restaurants");
+  };
+
+  const handleJoinRestaurant = () => {
+    showModal();
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -45,7 +63,12 @@ const Hero = () => {
                   className="pl-12 h-14 bg-white/90 border-0 text-foreground min-w-[200px]"
                 />
               </div>
-              <Button variant="hero" size="lg" className="h-14 px-8 text-lg font-semibold">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="h-14 px-8 text-lg font-semibold"
+                onClick={handleFindRestaurants}
+              >
                 Find Restaurants
               </Button>
             </div>
@@ -69,10 +92,20 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" className="text-lg">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg"
+              onClick={handleExploreRestaurants}
+            >
               Explore Restaurants
             </Button>
-            <Button variant="fresh" size="lg" className="text-lg">
+            <Button 
+              variant="fresh" 
+              size="lg" 
+              className="text-lg"
+              onClick={handleJoinRestaurant}
+            >
               Join as Restaurant
             </Button>
           </div>
@@ -90,6 +123,8 @@ const Hero = () => {
           <MapPin className="h-8 w-8 text-accent" />
         </div>
       </div>
+      
+      <DomainForSaleModal isOpen={isModalOpen} onClose={hideModal} />
     </section>
   );
 };
