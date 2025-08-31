@@ -1,14 +1,44 @@
-import { Search, MapPin, Star } from "lucide-react";
+import { Search, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import heroFood from "@/assets/hero-food.jpg";
+import { useState, useEffect } from "react";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
+import filipinoAdobo from "@/assets/filipino-adobo.jpg";
+import filipinoLechon from "@/assets/filipino-lechon.jpg";
+import filipinoSinigang from "@/assets/filipino-sinigang.jpg";
+import filipinoHalohalo from "@/assets/filipino-halohalo.jpg";
+import filipinoLumpia from "@/assets/filipino-lumpia.jpg";
 
 const Hero = () => {
   const navigate = useNavigate();
   const { isModalOpen, showModal, hideModal } = useDomainForSale();
+  
+  const slideImages = [
+    { image: filipinoAdobo, title: "Authentic Adobo", description: "Traditional Filipino comfort food" },
+    { image: filipinoLechon, title: "Crispy Lechon", description: "Perfect for celebrations" },
+    { image: filipinoSinigang, title: "Sinigang Soup", description: "Sour and savory perfection" },
+    { image: filipinoHalohalo, title: "Halo-Halo Delight", description: "Tropical shaved ice dessert" },
+    { image: filipinoLumpia, title: "Golden Lumpia", description: "Crispy Filipino spring rolls" }
+  ];
+  
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [slideImages.length]);
+  
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slideImages.length) % slideImages.length);
+  };
 
   const handleFindRestaurants = () => {
     navigate("/restaurants");
@@ -24,12 +54,46 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroFood})` }}
+      {/* Background Slideshow */}
+      <div className="absolute inset-0">
+        {slideImages.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30"></div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Slideshow Controls */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md rounded-full p-3 hover:bg-white/30 transition-all"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30"></div>
+        <ChevronLeft className="h-6 w-6 text-white" />
+      </button>
+      <button 
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md rounded-full p-3 hover:bg-white/30 transition-all"
+      >
+        <ChevronRight className="h-6 w-6 text-white" />
+      </button>
+      
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {slideImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentSlide ? 'bg-white' : 'bg-white/50'
+            }`}
+          />
+        ))}
       </div>
       
       {/* Content */}

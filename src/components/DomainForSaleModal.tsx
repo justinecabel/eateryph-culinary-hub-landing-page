@@ -14,7 +14,7 @@ const DomainForSaleModal = ({ isOpen, onClose }: DomainForSaleModalProps) => {
   };
 
   const handleContact = () => {
-    window.location.href = "mailto:contact@eatery.ph?subject=Interested in purchasing eatery.ph";
+    window.location.href = "mailto:youremail@domain.com?subject=Interested%20in%20purchasing%20eatery.ph%20domain&body=Hello,%20I%20am%20interested%20in%20purchasing%20the%20eatery.ph%20domain.%20Please%20provide%20more%20details%20about%20pricing%20and%20transfer%20process.";
   };
 
   return (
