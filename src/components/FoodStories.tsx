@@ -270,79 +270,83 @@ const FoodStories = () => {
         <div className="relative">
           <ScrollArea className="w-full">
             <div className="flex gap-3 pb-4 px-1">
-              {stories.map((story, index) => (
-                <div key={story.id} className="flex-none">
-                  {/* Ad Container every 6th item */}
-                  {index > 0 && (index + 1) % 6 === 0 && (
-                    <div className="w-48 h-64 mb-3">
+              {stories.map((story, index) => {
+                // Show ad instead of story every 6th item (starting from index 5)
+                if ((index + 1) % 6 === 0) {
+                  return (
+                    <div key={`ad-${index}`} className="flex-none w-48 h-64">
                       <AdContainer size="rectangle" className="w-full h-full" />
                     </div>
-                  )}
-                  
-                  <div 
-                    className="relative w-48 h-64 rounded-2xl overflow-hidden cursor-pointer group transform hover:scale-105 transition-all duration-300 bg-muted"
-                    onClick={() => openStory(story)}
-                  >
+                  );
+                }
+                
+                return (
+                  <div key={story.id} className="flex-none">
                     <div 
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${story.image})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-                    
-                    {/* Video indicator */}
-                    {story.isVideo && (
-                      <div className="absolute top-2 right-2">
-                        <div className="bg-black/50 backdrop-blur-sm rounded-full p-1.5">
-                          <Play className="h-3 w-3 text-white fill-white" />
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* User info */}
-                    <div className="absolute top-2 left-2 flex items-center space-x-1.5">
+                      className="relative w-48 h-64 rounded-2xl overflow-hidden cursor-pointer group transform hover:scale-105 transition-all duration-300 bg-muted"
+                      onClick={() => openStory(story)}
+                    >
                       <div 
-                        className="w-6 h-6 rounded-full bg-cover bg-center border border-white"
-                        style={{ backgroundImage: `url(${story.avatar})` }}
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${story.image})` }}
                       />
-                      <span className="text-white text-xs font-medium truncate max-w-16">
-                        {story.user}
-                      </span>
-                    </div>
-                    
-                    {/* Engagement */}
-                    <div className="absolute bottom-2 left-2 right-2">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                      
+                      {/* Video indicator */}
+                      {story.isVideo && (
+                        <div className="absolute top-2 right-2">
+                          <div className="bg-black/50 backdrop-blur-sm rounded-full p-1.5">
+                            <Play className="h-3 w-3 text-white fill-white" />
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* User info */}
+                      <div className="absolute top-2 left-2 flex items-center space-x-1.5">
+                        <div 
+                          className="w-6 h-6 rounded-full bg-cover bg-center border border-white"
+                          style={{ backgroundImage: `url(${story.avatar})` }}
+                        />
+                        <span className="text-white text-xs font-medium truncate max-w-16">
+                          {story.user}
+                        </span>
+                      </div>
+                      
+                      {/* Engagement */}
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <button 
+                              onClick={(e) => handleLike(story.id, e)}
+                              className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
+                            >
+                              <Heart 
+                                className={`h-3 w-3 ${likedStories.has(story.id) ? 'fill-red-500 text-red-500' : ''}`} 
+                              />
+                              <span className="text-xs">
+                                {story.likes + (likedStories.has(story.id) ? 1 : 0)}
+                              </span>
+                            </button>
+                            <button 
+                              onClick={handleComment}
+                              className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
+                            >
+                              <MessageCircle className="h-3 w-3" />
+                              <span className="text-xs">{story.comments}</span>
+                            </button>
+                          </div>
                           <button 
-                            onClick={(e) => handleLike(story.id, e)}
-                            className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
+                            onClick={handleShare}
+                            className="text-white hover:text-accent transition-colors"
                           >
-                            <Heart 
-                              className={`h-3 w-3 ${likedStories.has(story.id) ? 'fill-red-500 text-red-500' : ''}`} 
-                            />
-                            <span className="text-xs">
-                              {story.likes + (likedStories.has(story.id) ? 1 : 0)}
-                            </span>
-                          </button>
-                          <button 
-                            onClick={handleComment}
-                            className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
-                          >
-                            <MessageCircle className="h-3 w-3" />
-                            <span className="text-xs">{story.comments}</span>
+                            <Share2 className="h-3 w-3" />
                           </button>
                         </div>
-                        <button 
-                          onClick={handleShare}
-                          className="text-white hover:text-accent transition-colors"
-                        >
-                          <Share2 className="h-3 w-3" />
-                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
