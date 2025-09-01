@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
+import AdContainer from "@/components/AdContainer";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
 import { restaurants, cuisines } from "@/data/restaurants";
 
@@ -124,74 +125,79 @@ const RestaurantListing = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRestaurants.map((restaurant) => (
-                <Card 
-                  key={restaurant.id} 
-                  className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                  onClick={() => handleRestaurantClick(restaurant.id)}
-                >
-                  <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${restaurant.image})` }}
-                    />
-                    <div className="absolute top-3 right-3">
-                      <Badge variant={restaurant.isOpen ? "default" : "destructive"}>
-                        {restaurant.isOpen ? "Open" : "Closed"}
-                      </Badge>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <div className="space-y-3">
-                      <div>
-                        <h3 className="font-bold text-lg mb-1">{restaurant.name}</h3>
-                        <p className="text-sm text-muted-foreground">{restaurant.description}</p>
+              {filteredRestaurants.map((restaurant, index) => (
+                <div key={restaurant.id}>
+                  {/* Ad Container every 6th item */}
+                  {index > 0 && (index + 1) % 6 === 0 && (
+                    <AdContainer size="rectangle" className="mb-6" />
+                  )}
+                  <Card 
+                    className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    onClick={() => handleRestaurantClick(restaurant.id)}
+                  >
+                    <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${restaurant.image})` }}
+                      />
+                      <div className="absolute top-3 right-3">
+                        <Badge variant={restaurant.isOpen ? "default" : "destructive"}>
+                          {restaurant.isOpen ? "Open" : "Closed"}
+                        </Badge>
                       </div>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="flex items-center gap-1">
-                            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                            <span className="font-semibold text-sm">{restaurant.rating}</span>
+                    </div>
+                    <CardContent className="p-4">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="font-bold text-lg mb-1">{restaurant.name}</h3>
+                          <p className="text-sm text-muted-foreground">{restaurant.description}</p>
+                        </div>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1">
+                              <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                              <span className="font-semibold text-sm">{restaurant.rating}</span>
+                            </div>
+                            <span className="text-xs text-muted-foreground">
+                              ({restaurant.reviewCount})
+                            </span>
                           </div>
-                          <span className="text-xs text-muted-foreground">
-                            ({restaurant.reviewCount})
-                          </span>
+                          <Badge variant="secondary">{restaurant.cuisine}</Badge>
                         </div>
-                        <Badge variant="secondary">{restaurant.cuisine}</Badge>
-                      </div>
-                      
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          {restaurant.deliveryTime}
+                        
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            {restaurant.deliveryTime}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-4 w-4" />
+                            {restaurant.location}
+                          </div>
+                          <span className="font-medium">{restaurant.priceRange}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          {restaurant.location}
+                        
+                        <div className="flex gap-2 pt-2">
+                          <Button 
+                            size="sm" 
+                            className="flex-1"
+                            onClick={(e) => handleOrder(e, restaurant.id)}
+                          >
+                            Order Now
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => handleRestaurantClick(restaurant.id)}
+                          >
+                            View Menu
+                          </Button>
                         </div>
-                        <span className="font-medium">{restaurant.priceRange}</span>
                       </div>
-                      
-                      <div className="flex gap-2 pt-2">
-                        <Button 
-                          size="sm" 
-                          className="flex-1"
-                          onClick={(e) => handleOrder(e, restaurant.id)}
-                        >
-                          Order Now
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          onClick={() => handleRestaurantClick(restaurant.id)}
-                        >
-                          View Menu
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
             

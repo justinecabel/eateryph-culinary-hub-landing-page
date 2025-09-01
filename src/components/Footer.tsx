@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AdContainer from "@/components/AdContainer";
 
 const Footer = () => {
   const footerSections = [
@@ -46,9 +47,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        {/* Main Footer Content */}
+    <>
+      {/* Ad before footer */}
+      <div className="py-8 bg-muted/50">
+        <div className="container mx-auto px-4 flex justify-center">
+          <AdContainer size="banner" />
+        </div>
+      </div>
+      
+      <footer className="bg-foreground text-background py-16">
+        <div className="container mx-auto px-4">
+          {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -144,6 +153,14 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    
+    {/* Ad after footer */}
+    <div className="py-8 bg-muted/50">
+      <div className="container mx-auto px-4 flex justify-center">
+        <AdContainer size="banner" />
+      </div>
+    </div>
+    </>
   );
 };
 

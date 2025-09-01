@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
+import AdContainer from "@/components/AdContainer";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
 
 const CuisineCategories = () => {
@@ -65,23 +66,28 @@ const CuisineCategories = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {cuisines.map((cuisine) => (
-              <Card 
-                key={cuisine.name} 
-                className="group cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                onClick={() => handleCuisineClick(cuisine.name)}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">
-                    {cuisine.icon}
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">{cuisine.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{cuisine.description}</p>
-                  <Badge variant="secondary" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    {cuisine.count} places
-                  </Badge>
-                </CardContent>
-              </Card>
+            {cuisines.map((cuisine, index) => (
+              <div key={cuisine.name}>
+                {/* Ad Container every 4th item */}
+                {index > 0 && (index + 1) % 4 === 0 && (
+                  <AdContainer size="square" className="mb-6" />
+                )}
+                <Card 
+                  className="group cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  onClick={() => handleCuisineClick(cuisine.name)}
+                >
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-2xl font-bold group-hover:scale-110 transition-transform duration-300">
+                      {cuisine.icon}
+                    </div>
+                    <h3 className="font-bold text-lg mb-2">{cuisine.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{cuisine.description}</p>
+                    <Badge variant="secondary" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      {cuisine.count} places
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>

@@ -99,67 +99,69 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             Discover the Best
             <span className="block bg-gradient-hero bg-clip-text text-transparent">
               Filipino Eateries
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-200 max-w-2xl mx-auto px-4">
             From street food to fine dining, explore authentic Filipino flavors across the Philippines
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="flex flex-col md:flex-row gap-4 p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+          <div className="max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
+            <div className="flex flex-col gap-3 sm:gap-4 p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
               <div className="flex-1 relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                 <Input 
-                  placeholder="Search for restaurants, dishes, or cuisines..."
-                  className="pl-12 h-14 bg-white/90 border-0 text-foreground text-lg placeholder:text-muted-foreground"
+                  placeholder="Search restaurants, dishes..."
+                  className="pl-12 h-12 sm:h-14 bg-white/90 border-0 text-foreground text-sm sm:text-lg placeholder:text-muted-foreground"
                 />
               </div>
-              <div className="relative">
-                <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <Input 
-                  placeholder="Location"
-                  className="pl-12 h-14 bg-white/90 border-0 text-foreground min-w-[200px]"
-                />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="relative flex-1">
+                  <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <Input 
+                    placeholder="Location"
+                    className="pl-12 h-12 sm:h-14 bg-white/90 border-0 text-foreground"
+                  />
+                </div>
+                <Button 
+                  variant="hero" 
+                  size="lg" 
+                  className="h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-lg font-semibold whitespace-nowrap"
+                  onClick={handleFindRestaurants}
+                >
+                  Find Restaurants
+                </Button>
               </div>
-              <Button 
-                variant="hero" 
-                size="lg" 
-                className="h-14 px-8 text-lg font-semibold"
-                onClick={handleFindRestaurants}
-              >
-                Find Restaurants
-              </Button>
             </div>
           </div>
           
           {/* Quick Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 px-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent">5,000+</div>
-              <div className="text-gray-300">Restaurants</div>
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-accent">5,000+</div>
+              <div className="text-xs sm:text-sm text-gray-300">Restaurants</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent">50,000+</div>
-              <div className="text-gray-300">Reviews</div>
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-accent">50,000+</div>
+              <div className="text-xs sm:text-sm text-gray-300">Reviews</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent">100+</div>
-              <div className="text-gray-300">Cities</div>
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-accent">100+</div>
+              <div className="text-xs sm:text-sm text-gray-300">Cities</div>
             </div>
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button 
               variant="hero" 
               size="lg" 
-              className="text-lg"
+              className="text-sm sm:text-lg h-12 sm:h-auto"
               onClick={handleExploreRestaurants}
             >
               Explore Restaurants
@@ -167,7 +169,7 @@ const Hero = () => {
             <Button 
               variant="fresh" 
               size="lg" 
-              className="text-lg"
+              className="text-sm sm:text-lg h-12 sm:h-auto"
               onClick={handleJoinRestaurant}
             >
               Join as Restaurant
