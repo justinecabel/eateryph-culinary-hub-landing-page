@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Heart, MessageCircle, Share2, X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import AdContainer from "@/components/AdContainer";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
 import VideoAdModal from "@/components/VideoAdModal";
@@ -214,20 +215,8 @@ const stories = [
 const FoodStories = () => {
   const [selectedStory, setSelectedStory] = useState<typeof stories[0] | null>(null);
   const [likedStories, setLikedStories] = useState<Set<number>>(new Set());
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [showVideoAd, setShowVideoAd] = useState(false);
   const { isModalOpen, showModal, hideModal } = useDomainForSale();
-
-  // Auto-swipe functionality
-  useEffect(() => {
-    if (!selectedStory || selectedStory.isVideo) return;
-    
-    const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % stories.length);
-    }, 5000); // Auto-swipe every 5 seconds for images only
-
-    return () => clearInterval(timer);
-  }, [selectedStory]);
 
   // Show video ad occasionally
   useEffect(() => {
@@ -279,19 +268,19 @@ const FoodStories = () => {
 
         {/* Stories Slider */}
         <div className="relative">
-          <div className="overflow-hidden">
-            <div className="flex gap-4 pb-4">
+          <ScrollArea className="w-full">
+            <div className="flex gap-3 pb-4 px-1">
               {stories.map((story, index) => (
-                <div key={story.id} className="flex-none w-64 sm:w-72">
+                <div key={story.id} className="flex-none">
                   {/* Ad Container every 6th item */}
                   {index > 0 && (index + 1) % 6 === 0 && (
-                    <AdContainer size="rectangle" className="mb-4 h-80" />
+                    <div className="w-48 h-64 mb-3">
+                      <AdContainer size="rectangle" className="w-full h-full" />
+                    </div>
                   )}
                   
                   <div 
-                    className={`relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group transform hover:scale-105 transition-all duration-300 ${
-                      index > 0 && (index + 1) % 6 === 0 ? 'h-80' : ''
-                    }`}
+                    className="relative w-48 h-64 rounded-2xl overflow-hidden cursor-pointer group transform hover:scale-105 transition-all duration-300 bg-muted"
                     onClick={() => openStory(story)}
                   >
                     <div 
@@ -302,34 +291,34 @@ const FoodStories = () => {
                     
                     {/* Video indicator */}
                     {story.isVideo && (
-                      <div className="absolute top-3 right-3">
-                        <div className="bg-black/50 backdrop-blur-sm rounded-full p-2">
-                          <Play className="h-4 w-4 text-white fill-white" />
+                      <div className="absolute top-2 right-2">
+                        <div className="bg-black/50 backdrop-blur-sm rounded-full p-1.5">
+                          <Play className="h-3 w-3 text-white fill-white" />
                         </div>
                       </div>
                     )}
                     
                     {/* User info */}
-                    <div className="absolute top-3 left-3 flex items-center space-x-2">
+                    <div className="absolute top-2 left-2 flex items-center space-x-1.5">
                       <div 
-                        className="w-8 h-8 rounded-full bg-cover bg-center border-2 border-white"
+                        className="w-6 h-6 rounded-full bg-cover bg-center border border-white"
                         style={{ backgroundImage: `url(${story.avatar})` }}
                       />
-                      <span className="text-white text-sm font-medium truncate max-w-20">
+                      <span className="text-white text-xs font-medium truncate max-w-16">
                         {story.user}
                       </span>
                     </div>
                     
                     {/* Engagement */}
-                    <div className="absolute bottom-3 left-3 right-3">
+                    <div className="absolute bottom-2 left-2 right-2">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2">
                           <button 
                             onClick={(e) => handleLike(story.id, e)}
                             className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
                           >
                             <Heart 
-                              className={`h-4 w-4 ${likedStories.has(story.id) ? 'fill-red-500 text-red-500' : ''}`} 
+                              className={`h-3 w-3 ${likedStories.has(story.id) ? 'fill-red-500 text-red-500' : ''}`} 
                             />
                             <span className="text-xs">
                               {story.likes + (likedStories.has(story.id) ? 1 : 0)}
@@ -339,7 +328,7 @@ const FoodStories = () => {
                             onClick={handleComment}
                             className="flex items-center space-x-1 text-white hover:text-accent transition-colors"
                           >
-                            <MessageCircle className="h-4 w-4" />
+                            <MessageCircle className="h-3 w-3" />
                             <span className="text-xs">{story.comments}</span>
                           </button>
                         </div>
@@ -347,7 +336,7 @@ const FoodStories = () => {
                           onClick={handleShare}
                           className="text-white hover:text-accent transition-colors"
                         >
-                          <Share2 className="h-4 w-4" />
+                          <Share2 className="h-3 w-3" />
                         </button>
                       </div>
                     </div>
@@ -355,7 +344,8 @@ const FoodStories = () => {
                 </div>
               ))}
             </div>
-          </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
         </div>
 
         {/* Ad Container at the end */}
