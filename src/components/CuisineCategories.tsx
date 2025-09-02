@@ -71,7 +71,9 @@ const CuisineCategories = () => {
               
               if (shouldShowAd) {
                 return (
-                  <AdContainer key={`ad-${index}`} size="square" className="h-full" />
+                  <div key={`ad-${index}`} className="w-full h-full">
+                    <AdContainer size="square" className="!h-full !w-full max-w-none" />
+                  </div>
                 );
               }
               

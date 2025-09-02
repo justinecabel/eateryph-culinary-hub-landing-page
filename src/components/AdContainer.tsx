@@ -6,7 +6,7 @@ interface AdContainerProps {
 const AdContainer = ({ className = "", size = 'banner' }: AdContainerProps) => {
   const sizeClasses = {
     banner: 'h-24 w-full',
-    square: 'h-64 w-64',
+    square: 'h-48 w-48',
     rectangle: 'h-48 w-full'
   };
 

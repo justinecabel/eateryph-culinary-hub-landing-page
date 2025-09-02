@@ -7,6 +7,15 @@ import AdContainer from "@/components/AdContainer";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
 import VideoAdModal from "@/components/VideoAdModal";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
+import storyAdobo from "@/assets/story-adobo.jpg";
+import storyLechon from "@/assets/story-lechon.jpg";
+import storyFishballs from "@/assets/story-fishballs.jpg";
+import storyHalohalo from "@/assets/story-halohalo.jpg";
+import storyLumpia from "@/assets/story-lumpia.jpg";
+import filipinoSinigang from "@/assets/filipino-sinigang.jpg";
+import filipinoPancit from "@/assets/food-pancit.jpg";
+import filipinoSisig from "@/assets/food-sisig.jpg";
+import filipinoKareKare from "@/assets/food-karekare.jpg";
 
 // Mock stories data - in real app this would come from API
 const stories = [
@@ -14,7 +23,7 @@ const stories = [
     id: 1,
     user: "FoodieManila",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyAdobo,
     isVideo: false,
     likes: 234,
     comments: 45,
@@ -24,7 +33,7 @@ const stories = [
     id: 2,
     user: "ChefJuan",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyLechon,
     isVideo: true,
     likes: 189,
     comments: 32,
@@ -34,7 +43,7 @@ const stories = [
     id: 3,
     user: "StreetFoodLover",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyFishballs,
     isVideo: false,
     likes: 456,
     comments: 78,
@@ -44,7 +53,7 @@ const stories = [
     id: 4,
     user: "DessertQueen",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyHalohalo,
     isVideo: false,
     likes: 321,
     comments: 56,
@@ -54,7 +63,7 @@ const stories = [
     id: 5,
     user: "LumpiaLove",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyLumpia,
     isVideo: true,
     likes: 278,
     comments: 41,
@@ -64,7 +73,7 @@ const stories = [
     id: 6,
     user: "SinigangSoul",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: filipinoSinigang,
     isVideo: false,
     likes: 392,
     comments: 67,
@@ -124,7 +133,7 @@ const stories = [
     id: 12,
     user: "SoupsAndStews",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: filipinoKareKare,
     isVideo: true,
     likes: 421,
     comments: 73,
@@ -144,7 +153,7 @@ const stories = [
     id: 14,
     user: "NoodleNinja",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: filipinoPancit,
     isVideo: false,
     likes: 267,
     comments: 44,
@@ -184,11 +193,11 @@ const stories = [
     id: 18,
     user: "FestivalFoods",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: filipinoSisig,
     isVideo: true,
     likes: 523,
     comments: 98,
-    content: "Sinukmani and other kakanin for Lenten season! Traditional Filipino sweets 🍯"
+    content: "Sizzling sisig with crispy pork and egg! Perfect pulutan for the weekend 🥓"
   },
   {
     id: 19,
@@ -275,7 +284,7 @@ const FoodStories = () => {
                 if ((index + 1) % 6 === 0) {
                   return (
                     <div key={`ad-${index}`} className="flex-none w-48 h-64">
-                      <AdContainer size="rectangle" className="w-full h-full" />
+                      <AdContainer size="rectangle" className="!w-48 !h-64" />
                     </div>
                   );
                 }
