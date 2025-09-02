@@ -34,6 +34,10 @@ export interface Review {
 }
 
 import { additionalRestaurants } from './additionalRestaurants';
+import restaurant1 from "@/assets/restaurant-1.jpg";
+import restaurant2 from "@/assets/restaurant-2.jpg";
+import restaurant3 from "@/assets/restaurant-3.jpg";
+import restaurantInterior from "@/assets/restaurant-interior.jpg";
 
 export const restaurants: Restaurant[] = [
   // First 10 main restaurants
@@ -46,7 +50,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱",
     location: "Quezon City",
     description: "Authentic Filipino ice cream and traditional desserts made with love and local ingredients.",
-    image: "/api/placeholder/400/300",
+    image: restaurant1,
     isOpen: true,
     deliveryTime: "20-30 mins",
     features: ["Delivery", "Pickup", "Dine-in"],
@@ -69,7 +73,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱",
     location: "Manila",
     description: "Traditional Filipino home-cooked meals just like grandma used to make.",
-    image: "/api/placeholder/400/300",
+    image: restaurant2,
     isOpen: true,
     deliveryTime: "25-35 mins",
     features: ["Delivery", "Pickup", "Catering"],
@@ -91,7 +95,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱",
     location: "Makati",
     description: "Authentic Filipino street food experience with all your favorites.",
-    image: "/api/placeholder/400/300",
+    image: restaurant3,
     isOpen: true,
     deliveryTime: "15-25 mins",
     features: ["Delivery", "Pickup", "Late Night"],
@@ -114,7 +118,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱₱",
     location: "Antipolo",
     description: "Fresh seafood restaurant with scenic views and kamayan-style dining experience.",
-    image: "/api/placeholder/400/300",
+    image: restaurantInterior,
     isOpen: true,
     deliveryTime: "45-60 mins",
     features: ["Dine-in", "Catering", "Events"],
