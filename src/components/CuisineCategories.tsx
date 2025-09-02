@@ -66,14 +66,19 @@ const CuisineCategories = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {cuisines.map((cuisine, index) => (
-              <div key={cuisine.name}>
-                {/* Ad Container every 4th item */}
-                {index > 0 && (index + 1) % 4 === 0 && (
-                  <AdContainer size="square" className="mb-6" />
-                )}
+            {cuisines.map((cuisine, index) => {
+              const shouldShowAd = (index + 1) % 4 === 0;
+              
+              if (shouldShowAd) {
+                return (
+                  <AdContainer key={`ad-${index}`} size="square" className="h-full" />
+                );
+              }
+              
+              return (
                 <Card 
-                  className="group cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  key={cuisine.name}
+                  className="group cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full"
                   onClick={() => handleCuisineClick(cuisine.name)}
                 >
                   <CardContent className="p-6 text-center">
@@ -87,8 +92,8 @@ const CuisineCategories = () => {
                     </Badge>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

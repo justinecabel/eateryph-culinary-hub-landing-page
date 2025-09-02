@@ -125,14 +125,19 @@ const RestaurantListing = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRestaurants.map((restaurant, index) => (
-                <div key={restaurant.id}>
-                  {/* Ad Container every 6th item */}
-                  {index > 0 && (index + 1) % 6 === 0 && (
-                    <AdContainer size="rectangle" className="mb-6" />
-                  )}
+              {filteredRestaurants.map((restaurant, index) => {
+                const shouldShowAd = (index + 1) % 6 === 0;
+                
+                if (shouldShowAd) {
+                  return (
+                    <AdContainer key={`ad-${index}`} size="rectangle" className="h-full" />
+                  );
+                }
+                
+                return (
                   <Card 
-                    className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    key={restaurant.id}
+                    className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full"
                     onClick={() => handleRestaurantClick(restaurant.id)}
                   >
                     <div className="aspect-video bg-muted rounded-t-lg relative overflow-hidden">
@@ -197,8 +202,8 @@ const RestaurantListing = () => {
                       </div>
                     </CardContent>
                   </Card>
-                </div>
-              ))}
+                );
+              })}
             </div>
             
             {filteredRestaurants.length === 0 && (

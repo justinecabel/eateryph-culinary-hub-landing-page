@@ -53,7 +53,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Slideshow */}
       <div className="absolute inset-0">
         {slideImages.map((slide, index) => (
