@@ -16,6 +16,17 @@ import filipinoSinigang from "@/assets/filipino-sinigang.jpg";
 import filipinoPancit from "@/assets/food-pancit.jpg";
 import filipinoSisig from "@/assets/food-sisig.jpg";
 import filipinoKareKare from "@/assets/food-karekare.jpg";
+import storyPandesal from "@/assets/story-pandesal.jpg";
+import storyBangus from "@/assets/story-bangus.jpg";
+import storyGarlicRice from "@/assets/story-garlic-rice.jpg";
+import storyFiesta from "@/assets/story-fiesta.jpg";
+import storyAtchara from "@/assets/story-atchara.jpg";
+import storyInasal from "@/assets/story-inasal.jpg";
+import storyTuron from "@/assets/story-turon.jpg";
+import storyCoffee from "@/assets/story-coffee.jpg";
+import storyDirtyIceCream from "@/assets/story-dirty-ice-cream.jpg";
+import storyFruitSalad from "@/assets/story-fruit-salad.jpg";
+import storyTinola from "@/assets/story-tinola.jpg";
 
 // Mock stories data - in real app this would come from API
 const stories = [
@@ -83,7 +94,7 @@ const stories = [
     id: 7,
     user: "BakingBae",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyPandesal,
     isVideo: false,
     likes: 445,
     comments: 89,
@@ -93,7 +104,7 @@ const stories = [
     id: 8,
     user: "SeafoodMaster",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyBangus,
     isVideo: true,
     likes: 367,
     comments: 52,
@@ -103,7 +114,7 @@ const stories = [
     id: 9,
     user: "RiceHaven",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyGarlicRice,
     isVideo: false,
     likes: 298,
     comments: 43,
@@ -113,7 +124,7 @@ const stories = [
     id: 10,
     user: "FiestaCooks",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyFiesta,
     isVideo: false,
     likes: 512,
     comments: 95,
@@ -123,7 +134,7 @@ const stories = [
     id: 11,
     user: "PicklePassion",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyAtchara,
     isVideo: false,
     likes: 234,
     comments: 38,
@@ -143,7 +154,7 @@ const stories = [
     id: 13,
     user: "GrillMaster",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyInasal,
     isVideo: false,
     likes: 356,
     comments: 61,
@@ -163,7 +174,7 @@ const stories = [
     id: 15,
     user: "TuronTime",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyTuron,
     isVideo: true,
     likes: 389,
     comments: 57,
@@ -173,7 +184,7 @@ const stories = [
     id: 16,
     user: "CoffeeCorner",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyCoffee,
     isVideo: false,
     likes: 312,
     comments: 48,
@@ -183,7 +194,7 @@ const stories = [
     id: 17,
     user: "IceCreamDreams",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyDirtyIceCream,
     isVideo: false,
     likes: 445,
     comments: 82,
@@ -203,7 +214,7 @@ const stories = [
     id: 19,
     user: "HealthyEats",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyFruitSalad,
     isVideo: false,
     likes: 278,
     comments: 41,
@@ -213,7 +224,7 @@ const stories = [
     id: 20,
     user: "ComfortCooks",
     avatar: "/api/placeholder/50/50",
-    image: "/api/placeholder/400/600",
+    image: storyTinola,
     isVideo: false,
     likes: 398,
     comments: 66,
