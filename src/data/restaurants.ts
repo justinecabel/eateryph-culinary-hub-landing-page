@@ -38,6 +38,12 @@ import restaurant1 from "@/assets/restaurant-1.jpg";
 import restaurant2 from "@/assets/restaurant-2.jpg";
 import restaurant3 from "@/assets/restaurant-3.jpg";
 import restaurantInterior from "@/assets/restaurant-interior.jpg";
+import restaurantCarinderia from "@/assets/restaurant-carinderia.jpg";
+import restaurantBbq from "@/assets/restaurant-bbq.jpg";
+import restaurantNoodles from "@/assets/restaurant-noodles.jpg";
+import restaurantKakanin from "@/assets/restaurant-kakanin.jpg";
+import restaurantSilog from "@/assets/restaurant-silog.jpg";
+import restaurantLutongBahay from "@/assets/restaurant-lutong-bahay.jpg";
 
 export const restaurants: Restaurant[] = [
   // First 10 main restaurants
@@ -141,7 +147,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱",
     location: "Taguig",
     description: "No-frills carinderia serving hearty Filipino comfort food at affordable prices.",
-    image: "/api/placeholder/400/300",
+    image: restaurantCarinderia,
     isOpen: true,
     deliveryTime: "20-30 mins",
     features: ["Delivery", "Pickup", "Budget-Friendly"],
@@ -163,7 +169,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱",
     location: "Pasig",
     description: "The ultimate destination for perfectly grilled Filipino barbecue and ihaw-ihaw.",
-    image: "/api/placeholder/400/300",
+    image: restaurantBbq,
     isOpen: true,
     deliveryTime: "30-40 mins",
     features: ["Delivery", "Pickup", "Dine-in", "Late Night"],
@@ -185,7 +191,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱",
     location: "San Juan",
     description: "Specializing in all varieties of Filipino noodle dishes from different regions.",
-    image: "/api/placeholder/400/300",
+    image: restaurantNoodles,
     isOpen: true,
     deliveryTime: "25-35 mins",
     features: ["Delivery", "Pickup", "Catering"],
@@ -207,7 +213,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱",
     location: "Marikina",
     description: "Traditional Filipino rice cakes and native delicacies made fresh daily.",
-    image: "/api/placeholder/400/300",
+    image: restaurantKakanin,
     isOpen: true,
     deliveryTime: "20-30 mins",
     features: ["Pickup", "Delivery", "Wholesale"],
@@ -229,7 +235,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱",
     location: "Pasay",
     description: "24/7 silog specialist serving all your favorite Filipino breakfast combinations.",
-    image: "/api/placeholder/400/300",
+    image: restaurantSilog,
     isOpen: true,
     deliveryTime: "15-25 mins",
     features: ["Delivery", "Pickup", "24/7", "Budget-Friendly"],
@@ -251,7 +257,7 @@ export const restaurants: Restaurant[] = [
     priceRange: "₱₱",
     location: "Caloocan",
     description: "Authentic home-style Filipino cooking with recipes passed down through generations.",
-    image: "/api/placeholder/400/300",
+    image: restaurantLutongBahay,
     isOpen: true,
     deliveryTime: "30-40 mins",
     features: ["Delivery", "Pickup", "Family-Style"],
