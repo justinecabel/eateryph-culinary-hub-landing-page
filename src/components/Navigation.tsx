@@ -10,10 +10,10 @@ const Navigation = () => {
   const { isModalOpen, showModal, hideModal } = useDomainForSale();
 
   const menuItems = [
-    { name: "Find Restaurants", href: "#restaurants", icon: Utensils },
-    { name: "Locations", href: "#locations", icon: MapPin },
-    { name: "Reviews", href: "#reviews", icon: Star },
-    { name: "About", href: "#about", icon: User },
+    { name: "Find Restaurants", href: "/restaurants", icon: Utensils },
+    { name: "Locations", href: "/locations", icon: MapPin },
+    { name: "Reviews", href: "/reviews", icon: Star },
+    { name: "About", href: "/about", icon: User },
   ];
 
   return (
@@ -34,14 +34,14 @@ const Navigation = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="flex items-center space-x-2 text-foreground hover:text-primary transition-smooth"
               >
                 <item.icon className="h-4 w-4" />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -69,15 +69,15 @@ const Navigation = () => {
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
               {menuItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="flex items-center space-x-3 text-foreground hover:text-primary transition-smooth py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <item.icon className="h-5 w-5" />
                   <span>{item.name}</span>
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 <Button 
