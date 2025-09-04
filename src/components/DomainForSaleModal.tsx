@@ -105,12 +105,12 @@ const DomainForSaleModal = ({ isOpen, onClose }: DomainForSaleModalProps) => {
             </div>
           </div>
 
-          <DialogFooter className="flex-col space-y-2">
-            <Button onClick={handleContact} className="w-full" variant="default">
+          <DialogFooter className="flex flex-col sm:flex-row gap-3 sm:gap-2">
+            <Button onClick={handleContact} className="flex-1" variant="default">
               <Mail className="h-4 w-4 mr-2" />
               Contact for Purchase
             </Button>
-            <Button onClick={handleProceed} variant="outline" className="w-full">
+            <Button onClick={handleProceed} variant="outline" className="flex-1">
               Continue Browsing Demo
             </Button>
           </DialogFooter>
