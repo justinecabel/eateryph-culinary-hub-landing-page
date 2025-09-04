@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Globe, Mail, Phone, DollarSign, Play } from "lucide-react";
+import { Globe, Mail, Phone, DollarSign, Play, VolumeX } from "lucide-react";
 import VideoAdModal from "@/components/VideoAdModal";
 import { useState } from "react";
 
@@ -72,24 +72,36 @@ const DomainForSaleModal = ({ isOpen, onClose }: DomainForSaleModalProps) => {
 
             {/* Video Ad Section */}
             <div className="bg-gradient-to-r from-orange-50 to-red-50 p-4 rounded-lg border border-orange-200">
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-3">
                 <span className="font-medium text-orange-800">Sponsored Content</span>
                 <Badge variant="outline" className="border-orange-300 text-orange-600">
                   <Play className="h-3 w-3 mr-1" />
-                  Video
+                  Live
                 </Badge>
               </div>
-              <p className="text-sm text-orange-700 mb-3">
-                Watch a short ad to support our platform
-              </p>
-              <Button 
-                onClick={handleWatchAd} 
-                variant="outline" 
-                className="w-full border-orange-300 text-orange-600 hover:bg-orange-50"
-              >
-                <Play className="h-4 w-4 mr-2" />
-                Watch Advertisement
-              </Button>
+              
+              {/* Auto-playing Video Box */}
+              <div className="relative w-full h-32 bg-gradient-to-br from-orange-400 via-red-500 to-pink-600 rounded-lg overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center text-white">
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-2 mx-auto">
+                      <Play className="h-6 w-6 text-white fill-white ml-1" />
+                    </div>
+                    <p className="text-sm font-semibold">GrabFood - 50% Off!</p>
+                    <p className="text-xs opacity-90">Fast delivery nationwide</p>
+                  </div>
+                </div>
+                
+                {/* Video progress indicator */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+                  <div className="h-full bg-white w-1/3 animate-pulse"></div>
+                </div>
+                
+                {/* Mute button */}
+                <button className="absolute top-2 right-2 bg-black/30 hover:bg-black/50 text-white p-1 rounded-full transition-colors">
+                  <VolumeX className="h-3 w-3" />
+                </button>
+              </div>
             </div>
           </div>
 
