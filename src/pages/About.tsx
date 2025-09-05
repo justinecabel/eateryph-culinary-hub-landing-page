@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Heart, Users, MapPin, Award, Globe, Mail, Phone } from "lucide-react";
+import juanDelaCruzImg from "@/assets/team-juan-delacruz.jpg";
+import mariaGarciaImg from "@/assets/team-maria-garcia.jpg";
+import carlosSantosImg from "@/assets/team-carlos-santos.jpg";
 
 const About = () => {
   const team = [
@@ -12,19 +15,19 @@ const About = () => {
       name: "Juan Dela Cruz",
       role: "Founder & CEO",
       bio: "Passionate about Filipino cuisine and technology. Started eatery.ph to connect people with authentic Filipino restaurants.",
-      avatar: "/placeholder.svg"
+      avatar: juanDelaCruzImg
     },
     {
       name: "Maria Garcia",
       role: "Head of Operations",
       bio: "Expert in restaurant partnerships and customer experience. Ensures quality across all platform interactions.",
-      avatar: "/placeholder.svg"
+      avatar: mariaGarciaImg
     },
     {
       name: "Carlos Santos",
       role: "CTO",
       bio: "Tech enthusiast building scalable solutions for the food industry. Loves coding and great food.",
-      avatar: "/placeholder.svg"
+      avatar: carlosSantosImg
     }
   ];
 

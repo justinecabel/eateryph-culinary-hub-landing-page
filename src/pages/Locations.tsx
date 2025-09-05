@@ -3,6 +3,12 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Store, Users, Utensils } from "lucide-react";
+import metroManilaImg from "@/assets/location-metro-manila.jpg";
+import cebuCityImg from "@/assets/location-cebu-city.jpg";
+import davaoCityImg from "@/assets/location-davao-city.jpg";
+import baguioCityImg from "@/assets/location-baguio-city.jpg";
+import iloiloCityImg from "@/assets/location-iloilo-city.jpg";
+import cagayanDeOroImg from "@/assets/location-cagayan-de-oro.jpg";
 
 const Locations = () => {
   const locations = [
@@ -12,7 +18,7 @@ const Locations = () => {
       description: "The heart of Filipino cuisine with diverse dining options",
       restaurantCount: 1200,
       popularCuisines: ["Filipino", "Chinese", "Japanese", "Korean"],
-      image: "/placeholder.svg",
+      image: metroManilaImg,
       areas: ["Makati", "BGC", "Ortigas", "Quezon City", "Manila", "Pasig"]
     },
     {
@@ -21,7 +27,7 @@ const Locations = () => {
       description: "Famous for lechon and vibrant food scene",
       restaurantCount: 450,
       popularCuisines: ["Cebuano", "Filipino", "Seafood"],
-      image: "/placeholder.svg",
+      image: cebuCityImg,
       areas: ["IT Park", "Lahug", "Colon", "Capitol Site"]
     },
     {
@@ -30,7 +36,7 @@ const Locations = () => {
       description: "Southern Philippines culinary capital",
       restaurantCount: 320,
       popularCuisines: ["Mindanaoan", "Filipino", "Durian Specialties"],
-      image: "/placeholder.svg",
+      image: davaoCityImg,
       areas: ["Poblacion", "Lanang", "Buhangin", "Talomo"]
     },
     {
@@ -39,7 +45,7 @@ const Locations = () => {
       description: "Mountain cuisine and cool weather dining",
       restaurantCount: 280,
       popularCuisines: ["Cordilleran", "Filipino", "Strawberry Treats"],
-      image: "/placeholder.svg",
+      image: baguioCityImg,
       areas: ["Session Road", "Burnham Park", "Camp John Hay"]
     },
     {
@@ -48,7 +54,7 @@ const Locations = () => {
       description: "Home of La Paz batchoy and Ilonggo cuisine",
       restaurantCount: 220,
       popularCuisines: ["Ilonggo", "Filipino", "Seafood"],
-      image: "/placeholder.svg",
+      image: iloiloCityImg,
       areas: ["Jaro", "La Paz", "Molo", "City Proper"]
     },
     {
@@ -57,7 +63,7 @@ const Locations = () => {
       description: "Northern Mindanao's food hub",
       restaurantCount: 180,
       popularCuisines: ["Kagay-anon", "Filipino", "Grilled Specialties"],
-      image: "/placeholder.svg",
+      image: cagayanDeOroImg,
       areas: ["Divisoria", "Cogon", "Carmen", "Gusa"]
     }
   ];
@@ -103,10 +109,13 @@ const Locations = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {locations.map((location) => (
                 <Card key={location.id} className="overflow-hidden hover:shadow-elegant transition-all duration-300 group">
-                  <div className="aspect-video relative overflow-hidden bg-gradient-subtle">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                      <MapPin className="h-16 w-16 text-primary/60" />
-                    </div>
+                  <div className="aspect-video relative overflow-hidden">
+                    <img 
+                      src={location.image} 
+                      alt={`${location.name} cityscape`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40" />
                     <div className="absolute top-4 right-4">
                       <Badge className="bg-white/90 text-foreground">
                         {location.restaurantCount} restaurants

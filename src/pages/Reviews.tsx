@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, ThumbsUp, MessageCircle, Calendar, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import mariaSantosImg from "@/assets/reviewer-maria-santos.jpg";
+import johnDeGuzmanImg from "@/assets/reviewer-john-deguzman.jpg";
+import annaReyesImg from "@/assets/reviewer-anna-reyes.jpg";
+import carloMendozaImg from "@/assets/reviewer-carlo-mendoza.jpg";
+import kamayanFoodImg from "@/assets/review-kamayan-food.jpg";
+import bicolExpressImg from "@/assets/review-bicol-express.jpg";
+import sisigPlateImg from "@/assets/review-sisig-plate.jpg";
 
 const Reviews = () => {
   const featuredReviews = [
@@ -13,7 +20,7 @@ const Reviews = () => {
       id: 1,
       user: {
         name: "Maria Santos",
-        avatar: "/placeholder.svg",
+        avatar: mariaSantosImg,
         verified: true,
         reviewCount: 127
       },
@@ -28,13 +35,13 @@ const Reviews = () => {
       date: "2024-01-15",
       likes: 24,
       helpful: 18,
-      images: ["/placeholder.svg", "/placeholder.svg"]
+      images: [kamayanFoodImg, kamayanFoodImg]
     },
     {
       id: 2,
       user: {
         name: "John De Guzman",
-        avatar: "/placeholder.svg",
+        avatar: johnDeGuzmanImg,
         verified: true,
         reviewCount: 89
       },
@@ -49,13 +56,13 @@ const Reviews = () => {
       date: "2024-01-12",
       likes: 31,
       helpful: 27,
-      images: ["/placeholder.svg"]
+      images: [bicolExpressImg]
     },
     {
       id: 3,
       user: {
         name: "Anna Reyes",
-        avatar: "/placeholder.svg",
+        avatar: annaReyesImg,
         verified: false,
         reviewCount: 45
       },
@@ -70,13 +77,13 @@ const Reviews = () => {
       date: "2024-01-10",
       likes: 42,
       helpful: 35,
-      images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"]
+      images: [sisigPlateImg, sisigPlateImg, sisigPlateImg]
     },
     {
       id: 4,
       user: {
         name: "Carlo Mendoza",
-        avatar: "/placeholder.svg",
+        avatar: carloMendozaImg,
         verified: true,
         reviewCount: 203
       },
@@ -91,7 +98,7 @@ const Reviews = () => {
       date: "2024-01-08",
       likes: 67,
       helpful: 52,
-      images: ["/placeholder.svg"]
+      images: ["/src/assets/filipino-lechon.jpg"]
     }
   ];
 
