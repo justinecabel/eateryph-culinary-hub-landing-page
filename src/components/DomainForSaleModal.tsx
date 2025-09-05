@@ -34,22 +34,22 @@ const DomainForSaleModal = ({ isOpen, onClose }: DomainForSaleModalProps) => {
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader className="text-center">
-            <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-accent to-accent-glow rounded-full flex items-center justify-center">
-              <Globe className="h-8 w-8 text-white" />
+            <div className="mx-auto mb-4 w-16 h-16 bg-gradient-to-br from-primary via-primary-glow to-accent rounded-full flex items-center justify-center shadow-elegant border-2 border-white/20">
+              <Globe className="h-8 w-8 text-white drop-shadow-lg" />
             </div>
-            <DialogTitle className="text-2xl font-bold">
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Domain For Sale
             </DialogTitle>
             <DialogDescription className="text-base">
-              <span className="font-semibold text-accent">eatery.ph</span> is available for purchase
+              <span className="font-semibold text-primary">eatery.ph</span> is available for purchase
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-4">
-            <div className="bg-gradient-subtle p-4 rounded-lg">
+            <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 p-4 rounded-lg">
               <div className="flex items-center justify-between">
-                <span className="font-medium">Premium Domain</span>
-                <Badge variant="secondary">
+                <span className="font-medium text-foreground">Premium Domain</span>
+                <Badge variant="secondary" className="bg-gradient-to-r from-primary to-accent text-white border-0">
                   <DollarSign className="h-3 w-3 mr-1" />
                   Premium
                 </Badge>
@@ -60,12 +60,12 @@ const DomainForSaleModal = ({ isOpen, onClose }: DomainForSaleModalProps) => {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="text-center p-3 bg-card rounded-lg border">
-                <div className="text-sm font-medium">Short & Memorable</div>
+              <div className="text-center p-3 bg-card rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
+                <div className="text-sm font-medium text-foreground">Short & Memorable</div>
                 <div className="text-xs text-muted-foreground">Easy to remember</div>
               </div>
-              <div className="text-center p-3 bg-card rounded-lg border">
-                <div className="text-sm font-medium">.ph Domain</div>
+              <div className="text-center p-3 bg-card rounded-lg border border-accent/20 hover:border-accent/40 transition-colors">
+                <div className="text-sm font-medium text-foreground">.ph Domain</div>
                 <div className="text-xs text-muted-foreground">Philippines TLD</div>
               </div>
             </div>
