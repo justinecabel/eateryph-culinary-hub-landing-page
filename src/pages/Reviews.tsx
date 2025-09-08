@@ -1,11 +1,13 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, ThumbsUp, MessageCircle, Calendar, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { generateBreadcrumbStructuredData } from "@/utils/structuredData";
 import mariaSantosImg from "@/assets/reviewer-maria-santos.jpg";
 import johnDeGuzmanImg from "@/assets/reviewer-john-deguzman.jpg";
 import annaReyesImg from "@/assets/reviewer-anna-reyes.jpg";
@@ -123,8 +125,24 @@ const Reviews = () => {
     ));
   };
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "Reviews", url: "https://eatery.ph/reviews" }
+  ];
+
+  const structuredData = [
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Filipino Restaurant Reviews | Authentic Customer Experiences | eatery.ph"
+        description="Read authentic reviews of Filipino restaurants from verified customers. Discover the best dining experiences, ratings, and recommendations for Philippine cuisine."
+        keywords="Filipino restaurant reviews, Philippine food reviews, authentic restaurant ratings, customer dining experiences, best Filipino restaurants, verified restaurant reviews"
+        canonical="https://eatery.ph/reviews"
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-16">

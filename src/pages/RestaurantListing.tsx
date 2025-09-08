@@ -10,8 +10,10 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
 import AdContainer from "@/components/AdContainer";
+import SEO from "@/components/SEO";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
 import { restaurants, cuisines } from "@/data/restaurants";
+import { generateBreadcrumbStructuredData } from "@/utils/structuredData";
 
 const RestaurantListing = () => {
   const navigate = useNavigate();
@@ -58,8 +60,24 @@ const RestaurantListing = () => {
     showModal();
   };
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "Restaurants", url: "https://eatery.ph/restaurants" }
+  ];
+
+  const structuredData = [
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Filipino Restaurants Directory | Find the Best Philippine Cuisine | eatery.ph"
+        description="Browse our comprehensive directory of Filipino restaurants. Search by location, cuisine type, and ratings. Discover authentic Philippine dishes from traditional to modern interpretations."
+        keywords="Filipino restaurants directory, Philippine cuisine, restaurant search, Filipino food finder, authentic Filipino restaurants, traditional Philippine dishes, regional Filipino cuisine"
+        canonical="https://eatery.ph/restaurants"
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-20">

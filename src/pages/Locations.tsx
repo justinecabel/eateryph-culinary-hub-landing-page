@@ -1,8 +1,10 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Store, Users, Utensils } from "lucide-react";
+import { generateBreadcrumbStructuredData } from "@/utils/structuredData";
 import metroManilaImg from "@/assets/location-metro-manila.jpg";
 import cebuCityImg from "@/assets/location-cebu-city.jpg";
 import davaoCityImg from "@/assets/location-davao-city.jpg";
@@ -68,8 +70,24 @@ const Locations = () => {
     }
   ];
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "Locations", url: "https://eatery.ph/locations" }
+  ];
+
+  const structuredData = [
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Restaurant Locations Across Philippines | Find Dining by City | eatery.ph"
+        description="Discover Filipino restaurants in major cities across the Philippines. From Metro Manila to Cebu, Davao, Baguio and more. Find local dining spots in your area."
+        keywords="Filipino restaurants by location, Philippines restaurant cities, Metro Manila restaurants, Cebu dining, Davao restaurants, regional Filipino cuisine, restaurant locations Philippines"
+        canonical="https://eatery.ph/locations"
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-16">

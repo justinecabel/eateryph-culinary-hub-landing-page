@@ -1,10 +1,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Heart, Users, MapPin, Award, Globe, Mail, Phone } from "lucide-react";
+import { generateBreadcrumbStructuredData, generateOrganizationStructuredData } from "@/utils/structuredData";
 import juanDelaCruzImg from "@/assets/team-juan-delacruz.jpg";
 import mariaGarciaImg from "@/assets/team-maria-garcia.jpg";
 import carlosSantosImg from "@/assets/team-carlos-santos.jpg";
@@ -61,8 +63,25 @@ const About = () => {
     }
   ];
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "About", url: "https://eatery.ph/about" }
+  ];
+
+  const structuredData = [
+    generateOrganizationStructuredData(),
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="About eatery.ph - Philippines' Premier Restaurant Discovery Platform"
+        description="Learn about eatery.ph's mission to celebrate Filipino cuisine and connect food lovers with authentic restaurants across the Philippines. Meet our team and discover our story."
+        keywords="about eatery.ph, Filipino food platform, Philippine restaurant directory, authentic Filipino cuisine, restaurant discovery Philippines, Filipino food culture"
+        canonical="https://eatery.ph/about"
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-16">

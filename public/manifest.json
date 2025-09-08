@@ -1,0 +1,28 @@
+{
+  "name": "eatery.ph - Discover the Best Filipino Restaurants",
+  "short_name": "eatery.ph",
+  "description": "Discover authentic Filipino restaurants, read reviews, and explore the rich culinary heritage of the Philippines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ea580c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["food", "business", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "screenshots": [
+    {
+      "src": "/src/assets/hero-food.jpg",
+      "sizes": "1920x1080",
+      "type": "image/jpeg",
+      "label": "Homepage featuring Filipino cuisine"
+    }
+  ]
+}

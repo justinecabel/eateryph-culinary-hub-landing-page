@@ -9,8 +9,10 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import DomainForSaleModal from "@/components/DomainForSaleModal";
+import SEO from "@/components/SEO";
 import { useDomainForSale } from "@/hooks/useDomainForSale";
 import { getRestaurantById } from "@/data/restaurants";
+import { generateRestaurantStructuredData, generateBreadcrumbStructuredData } from "@/utils/structuredData";
 import { toast } from "@/hooks/use-toast";
 
 const RestaurantDetail = () => {
@@ -53,8 +55,28 @@ const RestaurantDetail = () => {
     showModal();
   };
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "Restaurants", url: "https://eatery.ph/restaurants" },
+    { name: restaurant.name, url: `https://eatery.ph/restaurant/${restaurant.id}` }
+  ];
+
+  const structuredData = [
+    generateRestaurantStructuredData(restaurant),
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title={`${restaurant.name} - ${restaurant.cuisine} Restaurant in ${restaurant.location} | eatery.ph`}
+        description={`${restaurant.description} Located in ${restaurant.location}. Rated ${restaurant.rating}/5 with ${restaurant.reviewCount} reviews. Order online or make a reservation.`}
+        keywords={`${restaurant.name}, ${restaurant.cuisine} restaurant, ${restaurant.location} dining, Filipino food ${restaurant.location}, restaurant reviews, food delivery ${restaurant.location}`}
+        canonical={`https://eatery.ph/restaurant/${restaurant.id}`}
+        type="restaurant"
+        image={restaurant.image}
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-20">

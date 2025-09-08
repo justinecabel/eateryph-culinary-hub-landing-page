@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,7 @@ import { Search, MapPin, Star, Clock, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { restaurants } from "@/data/restaurants";
 import { additionalRestaurants } from "@/data/additionalRestaurants";
+import { generateBreadcrumbStructuredData } from "@/utils/structuredData";
 import { useState } from "react";
 
 const Restaurants = () => {
@@ -40,8 +42,24 @@ const Restaurants = () => {
 
   const cuisines = [...new Set(allRestaurants.map(r => r.cuisine))];
 
+  const breadcrumbItems = [
+    { name: "Home", url: "https://eatery.ph/" },
+    { name: "All Restaurants", url: "https://eatery.ph/restaurants" }
+  ];
+
+  const structuredData = [
+    generateBreadcrumbStructuredData(breadcrumbItems)
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Complete Filipino Restaurant Guide | All Philippine Cuisine Types | eatery.ph"
+        description="Explore our complete guide to Filipino restaurants across the Philippines. From street food to fine dining, discover authentic regional cuisines and hidden culinary gems."
+        keywords="Filipino restaurant guide, complete Philippine cuisine, regional Filipino food, authentic Filipino restaurants, traditional Philippine dishes, Filipino food directory"
+        canonical="https://eatery.ph/restaurants"
+        structuredData={structuredData}
+      />
       <Navigation />
       
       <main className="pt-16">

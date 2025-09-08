@@ -3,19 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eatery.ph - Discover the Best Filipino Restaurants</title>
-    <meta name="description" content="Discover authentic Filipino restaurants, read reviews, and explore the rich culinary heritage of the Philippines. Find the best eateries from Manila to Mindanao." />
-    <meta name="author" content="eatery.ph" />
-    <meta name="keywords" content="Filipino restaurants, Philippine food, restaurant reviews, Filipino cuisine, dining Philippines" />
-
-    <meta property="og:title" content="eatery.ph - Discover the Best Filipino Restaurants" />
-    <meta property="og:description" content="Discover authentic Filipino restaurants, read reviews, and explore the rich culinary heritage of the Philippines." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- DNS Prefetch for Performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Core Web Vitals Optimization -->
+    <link rel="preload" href="/src/assets/hero-food.jpg" as="image" type="image/jpeg" />
+    
+    <!-- Fallback Meta Tags (will be overridden by React Helmet) -->
+    <title>eatery.ph - Discover the Best Filipino Restaurants | Authentic Philippine Cuisine</title>
+    <meta name="description" content="Find the best Filipino restaurants in the Philippines. Explore authentic regional cuisines, read reviews, and discover hidden gems from Luzon to Mindanao." />
+    
+    <!-- Language and Geo Tags -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="PH" />
+    <meta name="geo.country" content="Philippines" />
+    
+    <!-- Theme and App Meta -->
+    <meta name="theme-color" content="#ea580c" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="eatery.ph" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Performance Hints -->
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Structured Data for Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "eatery.ph",
+      "url": "https://eatery.ph",
+      "description": "Discover authentic Filipino restaurants, read reviews, and explore the rich culinary heritage of the Philippines.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://eatery.ph/restaurants?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
 
   <body>
