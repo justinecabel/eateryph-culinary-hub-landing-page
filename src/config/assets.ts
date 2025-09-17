@@ -1,5 +1,5 @@
 // Asset Configuration - Change BASE_URL to switch between local and external sources
-const BASE_URL = ""; // Empty for local assets, or use GitHub/CDN URL like "https://raw.githubusercontent.com/username/repo/main"
+const BASE_URL = "https://cdn.jsdelivr.net/gh/justinecabel/eateryph-culinary-hub-landing-page/"; // Empty for local assets, or use GitHub/CDN URL like "https://raw.githubusercontent.com/username/repo/main"
 
 // Helper function to get asset URL
 const getAssetUrl = (path: string) => BASE_URL ? `${BASE_URL}/${path}` : path;
